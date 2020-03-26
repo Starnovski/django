@@ -4,7 +4,8 @@ from django.utils import timezone
 # Create your models here.
 
 class Post(models.Model):
-    title = models.CharField(max_length =200)
+    title = models.CharField(max_length =150)
+    slug = models.SlugField(max_length = 100, unique = True, null=True)
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)

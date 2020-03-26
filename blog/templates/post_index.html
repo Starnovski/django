@@ -4,7 +4,7 @@
 <body>
   Post Index<br>
   {% for post in posts %}
-    <strong>{{ post.title }}</strong><br>
+  <a href = "{% url 'post_show' pk=post.pk %}">  <strong>{{ post.title }}</strong></a><br>
   {% endfor %}
 </body>
 

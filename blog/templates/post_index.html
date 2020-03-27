@@ -1,12 +1,9 @@
-<html>
+{% extends 'main.html' %}
 
 
-<body>
+{% block content %}
   Post Index<br>
   {% for post in posts %}
   <a href = "{% url 'post_show' pk=post.pk %}">  <strong>{{ post.title }}</strong></a><br>
   {% endfor %}
-</body>
-
-
-</html>
+{% endblock %}

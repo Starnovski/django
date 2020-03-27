@@ -10,4 +10,5 @@ def post_index(request):
 
 def post_show(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, '../templates/post_show.html', {'post':post})
+    comments = post.comments.all()
+    return render(request, '../templates/post_show.html', {'post':post, 'comments':comments})

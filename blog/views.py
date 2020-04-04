@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Post
 
 # Create your views here.
@@ -6,7 +7,17 @@ from .models import Post
 
 def post_index(request):
     posts = Post.objects.all()
-    return render(request, '../templates/post_index.html', {'posts':posts})
+    paginator = Paginator(posts, 10)
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+
+    return render(request, '../templates/post_index.html', {'page':page, 'posts':posts})
+
 
 def post_show(request, pk):
     post = get_object_or_404(Post, pk=pk)

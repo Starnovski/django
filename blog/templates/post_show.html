@@ -3,11 +3,17 @@
   Post Show<br>
 
 {% block content %}
-    Post Show<br>
-    <strong>{{ post.title }}</strong><br>
-    Comments<br>
+    Post Show
+    <br>
+    <strong><h4><p class="text-primary">{{ post.title }}</p></h4></strong><br>
+    {{ post.body }}<br><br><br>
+    <strong><h5>Comments </h5></strong>
+    <button type="button" onclick="show_comments()" class="btn btn-dark" id="show_comments">Show comments</button>
+    <br>
     {% for comment in comments %}
-      {{ comment.name }}<br>
-      {{ comment.body }}<br>
+      <br>
+      <p class="mb-0" style="display:none;"><strong>{{ comment.name }}</strong></p>
+      <p class="mb-0" style="display:none;">{{ comment.body }}</p>
     {% endfor %}
+
 {% endblock %}

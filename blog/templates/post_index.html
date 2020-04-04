@@ -6,4 +6,5 @@
   {% for post in posts %}
   <a href = "{% url 'post_show' pk=post.pk %}">  <strong>{{ post.title }}</strong></a><br>
   {% endfor %}
+  
 {% endblock %}

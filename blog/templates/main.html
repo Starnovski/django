@@ -16,7 +16,11 @@
     </ul>
 
     <span class="navbar-text">
-      Login
+      {% if user.is_authenticated %}
+        Logged in as <strong>{{ user.username }}</strong>|<a href = "{% url 'logout' %}">Logout</a>
+      {% else %}
+        <a href = "{% url 'login' %}">Login</a>
+      {% endif %}
     </span>
   </nav>
 

@@ -1,8 +1,10 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<form method="POST" class="comment-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-dark">Save</button>
-    </form>
+  <form method="POST" class="comment-form">{% csrf_token %}
+    <table>
+      {{ form }}
+    </table>
+    <button type="submit" class="btn btn-dark">Save</button>
+  </form>
 {% endblock %}

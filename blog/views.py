@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Post
 from .forms import CommentForm
@@ -32,6 +32,7 @@ def comment_new(request, pk):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.save()
+            return redirect('post_show', pk=pk)
     else:
         form = CommentForm()
     return render(request, '../templates/comment_new.html',{'form':form})

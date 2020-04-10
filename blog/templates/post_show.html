@@ -9,6 +9,12 @@
     {{ post.body }}<br><br><br>
     <strong><h5>Comments </h5></strong>
     <button type="button" onclick="show_comments()" class="btn btn-dark" id="show_comments">Show comments</button>
+    {% if user.is_authenticated %}
+      <a href="{% url 'comment_new' pk=post.pk %}">Add</a>
+      
+    {% else %}
+      Log in to add comment
+    {% endif %}
     <br>
     {% for comment in comments %}
       <br>

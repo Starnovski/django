@@ -3,7 +3,16 @@ from django.utils import timezone
 
 # Create your models here.
 
+class Category(models.Model):
+    name = models.CharField(max_length = 60)
+    body = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+
 class Post(models.Model):
+    category = models.ForeignKey(Category, on_delete = models.CASCADE)
     title = models.CharField(max_length =150)
     slug = models.SlugField(max_length = 100, unique = True, null=True)
     body = models.TextField()

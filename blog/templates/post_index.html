@@ -3,7 +3,12 @@
 
 {% block content %}
   Post Index<br>
+  {{ data }}
+
+
+  <br><br>
   {% for post in posts %}
   <a href = "{% url 'post_show' pk=post.pk %}">  <strong>{{ post.title }}</strong></a><br>
+    {{post.body|truncatewords:50}}<br><br>
   {% endfor %}
 {% endblock %}

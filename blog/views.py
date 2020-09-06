@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Post
 from .forms import CommentForm
+import json
+import urllib
 
 # Create your views here.
 
@@ -16,6 +18,10 @@ def post_index(request):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
+
+    #url = "http://localhost:3000/api/v1/categories"
+    #response = urllib.request.urlopen(url)
+    #data = json.loads(response.read())
 
     return render(request, '../templates/post_index.html', {'page':page, 'posts':posts})
 

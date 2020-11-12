@@ -2,13 +2,11 @@
 
 {% block content %}
 
-  <form method="POST" class="comment-form">
-  {% csrf_token %}
-  <table>
-	{{ form }}
-  </table>
+  <form method="POST" class="form-group">
+	{% csrf_token %}
+	{{ form.as_p }}
 	<button type="submit" class="btn btn-success">Register</button>
-  </form>
+    </form>
 
 
 {% endblock %}

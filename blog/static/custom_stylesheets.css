@@ -1,0 +1,15 @@
+.button_left{
+  position:relative;
+  width:4%;
+  height:6%;
+  margin-left:0px;
+  background-color:black;
+
+}
+.button_right{
+  position:relative;
+  left:92%;
+  width:4%;
+  height:6%;
+  background-color:black;
+}

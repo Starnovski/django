@@ -32,6 +32,11 @@ def post_show(request, pk):
     return render(request, '../templates/post_show.html', {'post':post, 'comments':comments})
 
 
+def show_category_posts(request, category_id):
+    posts = Post.objects.filter(category = category_id)
+    return render(request,'../templates/post_index.html',{'posts':posts})
+
+
 def comment_new(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":

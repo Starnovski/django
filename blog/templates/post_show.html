@@ -1,15 +1,16 @@
 {% extends 'main.html' %}
 
-  Post Show<br>
-
 {% block content %}
-    {{ post.category }}<br>
+
+    {{ post.category }}
+    <hr style="height:1px; background-color:black;">
+    <br>
     <br>
     <strong><h4><p class="text-primary">{{ post.title }}</p></h4></strong><br>
 
     {{ post.body }}<br><br><br>
     <strong><h5>Comments </h5></strong>
-    <button type="button" onclick="show_comments()" class="btn btn-dark" id="show_comments">Show comments</button>
+    <button type="button" onclick="show_comments()" class="btn btn-primary" id="show_comments">Show comments</button>
     {% if user.is_authenticated %}
       <a href="{% url 'comment_new' pk=post.pk %}"><button type="button" class="btn btn-success">Add</button></a>
 

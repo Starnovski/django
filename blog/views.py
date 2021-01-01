@@ -10,7 +10,7 @@ import urllib
 
 def post_index(request):
     posts = Post.objects.all()
-    paginator = Paginator(posts, 10)
+    paginator = Paginator(posts, 6)
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)

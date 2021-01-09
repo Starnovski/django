@@ -1,5 +1,11 @@
 {% extends 'main.html' %}
 
+{% block category %}
+  {% for cat in cats %}
+    <a href="{% url 'show_category_posts' category_id=cat.id %}">{{ cat.name }}</a>
+  {% endfor %}
+{% endblock %}
+
 
 {% block content %}
 

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Post
+from .models import Post, Category
 from .forms import CommentForm
 import json
 import urllib
@@ -10,6 +10,7 @@ import urllib
 
 def post_index(request):
     posts = Post.objects.all()
+    cats = Category.objects.all()
     paginator = Paginator(posts, 6)
     page = request.GET.get('page')
     try:
@@ -23,7 +24,7 @@ def post_index(request):
     #response = urllib.request.urlopen(url)
     #data = json.loads(response.read())
 
-    return render(request, '../templates/post_index.html', {'page':page, 'posts':posts})
+    return render(request, '../templates/post_index.html', {'page':page, 'posts':posts, 'cats':cats})
 
 
 def post_show(request, pk):

@@ -1,0 +1,33 @@
+body {background-color: black;}
+h1 {text-align: center;}
+
+.top_photo {background-image: url('wawel.jpeg');
+            z-index:-1;
+            position:fixed;
+            height: 20rem !important;
+            width:100%;
+            margin: 0 auto;
+            }
+
+.top {height: 20rem !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width:100%;
+      margin: 0 auto;}
+
+.content {background-color: white;
+          min-height: 10rem;
+          width:100%;
+          margin: 0 auto;
+          }
+
+.main {margin-left:10%;
+        margin-right:10%;
+      padding-top:10%;
+      padding-bottom:10%;}
+
+.footer {background-color: black;
+          width:100%;
+          margin: 0 auto;
+        }

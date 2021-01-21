@@ -1,23 +1,24 @@
 <html>
 <head>
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% load static %}
   {% load templatetags %}
   <script type="text/javascript" src="{% static 'custom.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'custom.css' %}">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="{% static 'custom_stylesheets.css' %}">
+  <link rel="stylesheet" href="style.css">
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
 </head>
 
 
 <body>
+  <div>
 
-  <div style="margin-bottom:20px;">
-  <nav class="navbar fixed-top navbar-dark  shadow p-3 mb-5" style="background-color:black;">
+    <div class="top_photo">
+      </div>
+      <nav class="navbar fixed-top navbar-dark  shadow p-3 mb-5" style="background-color:black;">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="{% url 'post_index' %}">Home <span class="sr-only">(current)</span></a>
@@ -25,54 +26,34 @@
     </ul>
 
     <span class="navbar-text">
+
       {% if user.is_authenticated %}
         <strong>{{ user.username }}</strong> | <a href = "{% url 'logout' %}">Logout</a>
       {% else %}
         <strong>Guest</strong> | <a href = "{% url 'register' %}">Sign up </a>| <a href = "{% url 'login' %}">Login</a>
       {% endif %}
+
     </span>
   </nav>
-</div>
-
-
-
-    <div class="card-deck" style="margin-left:5%; margin-right:5%; margin-top:10em;">
-      <div class="card shadow p-3 mb-5" >
-        <div class="card-body">
-          <h5 class="card-title">
-            {% total %}
-          </h5>
-          <p class="text-dark">Total amount of posts</p>
-        </div>
+      <div class="top">
+        <h1>gfx</h1>
       </div>
-      <div class="card shadow p-3 mb-5" >
-        <div class="card-body">
-          <h5 class="card-title">{% total_comments %}</h5>
-          <p class="text-dark">Total amount of comments</p>
-        </div>
-      </div>
-      <div class="card shadow p-3 mb-5" >
-        <div class="card-body">
-          <h5 class="card-title">Card1</h5>
-          <p class="text-dark">Car1 Text</p>
-        </div>
+
+    <div class="content">
+      <div class="main">
+        {% block category %}
+        {% endblock %}
+        {% block content %}
+        {% endblock %}
+        <br>
+        {% include "pagination.html" with page=posts %}
       </div>
     </div>
-    </div>
-    <div class="content" style="background-color:white; width:80%; margin: 5% 10% 5% 10%;">
-      {% block category %}
-      {% endblock %}
-      {% block content %}
-      {% endblock %}
-      <br>
-      {% include "pagination.html" with page=posts %}
-    </div>
-    <div class="footer">
-      <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
-      </nav>
+    <div class="footer">hgfd
+
     </div>
 
+  </div>
 </body>
-
 
 </html>

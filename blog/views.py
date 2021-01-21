@@ -11,7 +11,7 @@ import urllib
 def post_index(request):
     posts = Post.objects.all()
     cats = Category.objects.all()
-    paginator = Paginator(posts, 6)
+    paginator = Paginator(posts, 3)
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)
@@ -35,7 +35,15 @@ def post_show(request, pk):
 
 def show_category_posts(request, category_id):
     posts = Post.objects.filter(category = category_id)
-    return render(request,'../templates/post_index.html',{'posts':posts})
+    paginator = Paginator(posts, 5)
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+    return render(request,'../templates/post_index.html',{'page':page, 'posts':posts})
 
 
 def comment_new(request, pk):
